@@ -1,0 +1,21 @@
+resources:
+  repositories:
+  - repository: airflow-github-sync
+    type: github
+    endpoint: ambika-garg
+    name: airflow-github-sync
+
+pr:
+- dev
+- prod
+
+trigger:
+- dev
+
+pool: 
+  vmImage: ubuntu-latest
+
+jobs:
+- job: CI
+  - steps:
+    - checkout: airflow-github-sync

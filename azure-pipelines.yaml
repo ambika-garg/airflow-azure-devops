@@ -4,7 +4,7 @@ resources:
   repositories:
   - repository: airflow-azure-devops
     type: github
-    endpoint: ambika-garg
+    endpoint: airflow-devops-service-connection
     name: airflow-azure-devops
 
 pr:

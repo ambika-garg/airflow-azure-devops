@@ -8,11 +8,10 @@ resources:
     name: airflow-azure-devops
 
 pr:
-- dev
-- prod
+- main
 
 trigger:
-- dev
+- main
 
 pool: 
   vmImage: ubuntu-latest

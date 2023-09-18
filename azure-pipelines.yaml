@@ -2,10 +2,10 @@ name: CI/CD Pipeline on Azure devops
 
 resources:
   repositories:
-  - repository: airflow-github-sync
+  - repository: airflow-azure-devops
     type: github
     endpoint: ambika-garg
-    name: airflow-github-sync
+    name: airflow-azure-devops
 
 pr:
 - dev
@@ -20,4 +20,4 @@ pool:
 jobs:
 - job: CI
   steps:
-    - checkout: airflow-github-sync
+    - checkout: airflow-azure-devops

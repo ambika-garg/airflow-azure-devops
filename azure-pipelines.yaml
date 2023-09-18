@@ -17,5 +17,5 @@ pool:
 
 jobs:
 - job: CI
-  - steps:
+  steps:
     - checkout: airflow-github-sync

@@ -2,7 +2,7 @@
 # from airflow.operators.bash import BashOperator
 # from airflow.models import DAG
 import pytest
-from airflow.models import dagbag
+from airflow.models import DagBag
 
 
 @pytest.fixture()

@@ -6,19 +6,35 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+  - job: 'Setup'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      matrix:
+        Python311:
+          python.version: '3.11'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-  displayName: 'Use python version'
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(python.version)'
+      displayName: 'Use python version'
 
-- script: |
-    python -m venv myenv
-    source myenv/bin/activate
-    python -m pip install --upgrade pip
-    pip install setup
-    pip install -r ./requirements.txt
-  displayName: "Install requirements"
+    - script: |
+        python -m venv myenv
+        source myenv/bin/activate
+        python -m pip install --upgrade pip
+        pip install setup
+        pip install -r ./requirements.txt
+      displayName: "Install requirements"
+
+    - script: |
+        python -m pip install flake8
+        flake8 .
+      displayName: 'Run lint tests'
+
+    - script: |
+        pip install pytest pytest-azurepipelines
+        pytest tests/
+      displayName: 'pytest'

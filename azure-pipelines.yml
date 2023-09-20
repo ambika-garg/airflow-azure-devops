@@ -36,5 +36,5 @@ jobs:
 
     - script: |
         pip install pytest pytest-azurepipelines
-        pytest tests/
+        pytest tests/ --max-line-length=120
       displayName: 'pytest'

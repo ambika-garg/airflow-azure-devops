@@ -31,10 +31,10 @@ jobs:
 
     - script: |
         python -m pip install flake8
-        flake8 .
+        flake8 --max-line-length=120
       displayName: 'Run lint tests'
 
     - script: |
         pip install pytest pytest-azurepipelines
-        pytest tests/ --max-line-length=120
+        pytest tests/
       displayName: 'pytest'

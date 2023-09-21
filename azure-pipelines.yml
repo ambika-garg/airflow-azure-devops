@@ -35,6 +35,6 @@ jobs:
       displayName: 'Run lint tests'
 
     - script: |
-        pip install pytest pytest-azurepipelines
+        pip install pytest
         pytest tests/
       displayName: 'pytest'

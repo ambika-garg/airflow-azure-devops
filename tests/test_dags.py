@@ -1,11 +1,16 @@
 # from datetime import datetime
 # from airflow.operators.bash import BashOperator
 # from airflow.models import DAG
+import os
+import sys
 import pytest
 from airflow.models import DagBag
 
 
-@pytest.fixture()
+sys.path.append(os.path.join(os.path.dirname(__file__), "./dags"))
+
+
+@pytest.fixture(params=["./dags/"])
 def dagbag():
     return DagBag(dag_folder="dags")
 

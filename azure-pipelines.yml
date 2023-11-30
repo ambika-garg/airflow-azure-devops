@@ -1,40 +1,29 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
-jobs:
-  - job: 'Setup'
-    pool:
-      vmImage: 'ubuntu-latest'
-    strategy:
-      matrix:
-        Python311:
-          python.version: '3.11'
+pool:
+  vmImage: ubuntu-latest
+strategy:
+  matrix:
+    Python38:
+      python.version: '3.8'
+    Python39:
+      python.version: '3.9'
+    Python310:
+      python.version: '3.10'
 
-    steps:
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '$(python.version)'
-      displayName: 'Use python version'
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
 
-    - script: |
-        python -m venv myenv
-        source myenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setup
-        pip install -r ./requirements.txt
-      displayName: "Install requirements"
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
 
-    - script: |
-        python -m pip install flake8
-        flake8 --max-line-length=120
-      displayName: 'Run lint tests'
-
-    - script: |
-        pip install pytest
-        pytest tests/
-      displayName: 'pytest'
+- script: |
+    pip install pytest pytest-azurepipelines
+    pytest
+  displayName: 'pytest'

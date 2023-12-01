@@ -19,7 +19,7 @@ def dagbag():
 def test_dag(dagbag):
     """Validate a complete DAG"""
     dagIds = dagbag.dag_ids
-    logging.info("dagIds", dagIds)
+    logging.info("dagIds %s", dagIds)
     # print(dagIds)
 
     for id in dagIds:

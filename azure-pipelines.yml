@@ -20,10 +20,14 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
+    pip install pytest pytest-azurepipelines
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest pytest-azurepipelines
+    pwd
+    airflow webserver &
+    airflow db init
+    airflow scheduler &
     pytest
   displayName: 'pytest'

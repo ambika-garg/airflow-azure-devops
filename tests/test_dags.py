@@ -35,9 +35,8 @@ def test_expected_dags(dagbag):
     expected_dag_ids = ["demo_one"]
     for dag_id in expected_dag_ids:
         dag = dagbag.get_dag(dag_id)
-
-    assert dag is not None
-    assert dag_id == dag.dag_id
+        assert dag is not None
+        assert dag_id == dag.dag_id
 
 
 def test_import_dags(dagbag):

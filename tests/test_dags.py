@@ -26,6 +26,16 @@ def test_dag(dagbag):
         dag = dagbag.get_dag(id)
         dag.test()
 
+def test_expected_dags(dagbag):
+    """
+    Test whether expected dag Ids are present.
+    """
+    expected_dag_ids = ["ci-cd-demo"]
+    for dag_id in expected_dag_ids:
+        dag = dagbag.get_dag(dag_id)
+
+    assert dag is not None
+    assert dag_id == dag.dag_id
 
 def test_import_dags(dagbag):
     assert not dagbag.import_errors

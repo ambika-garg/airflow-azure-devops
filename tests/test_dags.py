@@ -7,8 +7,9 @@ import pytest
 from airflow.models import DagBag
 import logging
 
-
+# os.environ["AIRFLOW_HOME"] = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(os.path.join(os.path.dirname(__file__), "./dags"))
+os.environ["AIRFLOW_HOME"] = "/Users/ambikagarg/airflow"
 
 
 @pytest.fixture()

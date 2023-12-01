@@ -31,7 +31,7 @@ def test_expected_dags(dagbag):
     """
     Test whether expected dag Ids are present.
     """
-    expected_dag_ids = ["ci-cd-demo"]
+    expected_dag_ids = ["demo_one"]
     for dag_id in expected_dag_ids:
         dag = dagbag.get_dag(dag_id)
 

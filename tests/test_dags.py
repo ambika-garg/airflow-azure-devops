@@ -7,10 +7,7 @@ import pytest
 from airflow.models import DagBag
 import logging
 
-# os.environ["AIRFLOW_HOME"] = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(os.path.join(os.path.dirname(__file__), "./dags"))
-# os.environ["AIRFLOW_HOME"] = "/Users/ambikagarg/airflow"
-
 
 @pytest.fixture()
 def dagbag():
@@ -32,7 +29,7 @@ def test_expected_dags(dagbag):
     """
     Test whether expected dag Ids are present.
     """
-    expected_dag_ids = ["demo_one"]
+    expected_dag_ids = ["demo_one", "example_synapse_run_pipeline"]
     for dag_id in expected_dag_ids:
         dag = dagbag.get_dag(dag_id)
         assert dag is not None

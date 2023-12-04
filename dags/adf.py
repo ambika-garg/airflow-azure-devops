@@ -14,8 +14,5 @@ with DAG(dag_id="demo_one", start_date=datetime(2023, 8, 15), schedule="0 0 * * 
 
     task3 = BashOperator(task_id="task3", bash_command="echo task3")
 
-    # task4 = BashOperator(task_id="task4", bash_command="echo task4")
-
     # Set dependencies between tasks
     task1 >> version >> task2 >> task3
-    # >> task4

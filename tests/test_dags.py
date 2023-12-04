@@ -9,6 +9,7 @@ import logging
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "./dags"))
 
+
 @pytest.fixture()
 def dagbag():
     return DagBag(dag_folder="dags", include_examples=False)
